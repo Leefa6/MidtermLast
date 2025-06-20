@@ -48,7 +48,7 @@ setting up the layout (nav bar, footer, and background logo
 }
 
 .navbar-brand img { /* targetting the logo inside the nav bar */
-  height: 75px; /* making the logo a consistent size */
+  height: clamp(40px, 6vw, 75px); /* Responsive height: minimum 40px, preferred 6vw, maximum 75px */
   width: auto; /* we used it to make sure the logo scales properly */
   transition: transform 0.5s; /* making animations, the logo will hover a bit  */
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); /* giving the logo a subtle shadow so it looks 3d when hovered */
@@ -63,7 +63,7 @@ setting up the layout (nav bar, footer, and background logo
   padding: 2rem 0; /* giving space in the footer, 0 gives vertical space for the top and bottom*/
 }
 .footer-logo { /* footer logo related */
-  height: 100px; /* Footer logo size */
+  height: clamp(60px, 8vw, 100px); /* Responsive height: minimum 60px, preferred 8vw, maximum 100px */
   width: auto; /* Keep aspect ratio */
   transition: transform 0.5s; /* Smooth hover effect */
 }
@@ -81,11 +81,34 @@ setting up the layout (nav bar, footer, and background logo
   pointer-events: none; /* this makes the logo not clickable, causing it not to interfere with the content on the page */
 }
 .background-logo img { /* background logo visibility and size */
-  width: 550px; /* Large but subtle */
+  width: clamp(300px, 40vw, 550px); /* Responsive width: minimum 300px, preferred 40vw, maximum 550px */
   height: auto; /* Keep aspect ratio */
   filter: grayscale(200%); /* desaturates the logo to make it subtle  */
 }
 
+/* Hero section logo (home page) */
+.hero-logo {
+  height: clamp(120px, 15vw, 200px); /* Responsive height: minimum 120px, preferred 15vw, maximum 200px */
+  width: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 8px 16px rgba(111, 66, 193, 0.2));
+}
+
+.hero-logo:hover {
+  transform: scale(1.05);
+}
+
+/* About page specific logo styling */
+.about-logo {
+  height: clamp(80px, 10vw, 140px); /* Smaller than hero logo: minimum 80px, preferred 10vw, maximum 140px */
+  width: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 6px 12px rgba(111, 66, 193, 0.15));
+}
+
+.about-logo:hover {
+  transform: scale(1.05);
+}
 
 /* COMPONENTSSSSSSSS
 cards , buttons, badges, and forms
@@ -267,16 +290,65 @@ SPECIFIC CHANGES/FEATURES ,, CALENDAR, AND ATTENDANCE
 MEDIA - responsitivity 
 
 /* this adjusts for the mobile and tablet users */
-======================================  */
+/* ====================================== */
 
 @media (max-width: 768px) { /* using the media function along with the 768px will allow mobile users and tablet users to be able to have the same effects when they enter the website, the commands ovveride and adjust to the screen */
-  .navbar-brand img { height: 32px; } /* Smaller logo on mobile */
-  .footer-logo { height: 36px; } /* Smaller footer logo */
+  .navbar-brand img { 
+    height: clamp(32px, 8vw, 50px); /* Responsive navbar logo for mobile */
+  }
+  .footer-logo { 
+    height: clamp(40px, 10vw, 60px); /* Responsive footer logo for mobile */
+  }
+  .hero-logo {
+    height: clamp(80px, 20vw, 120px); /* Responsive hero logo for mobile */
+  }
+  .about-logo {
+    height: clamp(60px, 15vw, 90px); /* Responsive about logo for mobile */
+  }
+  .background-logo img {
+    width: clamp(200px, 60vw, 350px); /* Responsive background logo for mobile */
+  }
   .calendar-box { min-width: 80px; padding: 0.5rem; } /* Smaller calendar */
   .calendar-day { font-size: 1.2rem; } /* Smaller day number */
   .attendance-controls { flex-direction: column; align-items: center; } /* Stack buttons */
   .attendance-controls .btn { width: 100%; max-width: 200px; } /* Full width buttons */
-} 
+}
+
+@media (max-width: 480px) { /* Extra small devices */
+  .navbar-brand img { 
+    height: clamp(28px, 6vw, 40px); /* Even smaller navbar logo */
+  }
+  .footer-logo { 
+    height: clamp(35px, 8vw, 50px); /* Even smaller footer logo */
+  }
+  .hero-logo {
+    height: clamp(70px, 18vw, 100px); /* Even smaller hero logo */
+  }
+  .about-logo {
+    height: clamp(50px, 12vw, 80px); /* Even smaller about logo */
+  }
+  .background-logo img {
+    width: clamp(150px, 50vw, 250px); /* Even smaller background logo */
+  }
+}
+
+@media (min-width: 1200px) { /* Large desktop screens */
+  .navbar-brand img { 
+    height: clamp(60px, 5vw, 85px); /* Larger navbar logo for big screens */
+  }
+  .footer-logo { 
+    height: clamp(80px, 7vw, 120px); /* Larger footer logo for big screens */
+  }
+  .hero-logo {
+    height: clamp(150px, 12vw, 220px); /* Larger hero logo for big screens */
+  }
+  .about-logo {
+    height: clamp(100px, 8vw, 160px); /* Larger about logo for big screens */
+  }
+  .background-logo img {
+    width: clamp(400px, 35vw, 600px); /* Larger background logo for big screens */
+  }
+}
 
 
 

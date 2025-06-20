@@ -1,0 +1,258 @@
+/*
+============================================================
+ 🌙 HIGH STILL - DARK MODE STYLESHEET
+============================================================
+ Dark mode theme styles that override the default light theme.
+ Applied when the 'dark-mode' class is present on the body element.
+============================================================
+*/
+
+/* ===== DARK MODE BASE STYLES ===== */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%) !important;
+    color: #e8e8e8 !important;
+}
+
+/* ===== DARK MODE NAVBAR ===== */
+body.dark-mode .navbar {
+    background: linear-gradient(135deg, #2d1b69 0%, #1a0b2e 100%) !important;
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3) !important;
+}
+
+/* ===== DARK MODE TOGGLE BUTTON ===== */
+body.dark-mode #darkModeToggle {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode #darkModeToggle:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ===== DARK MODE CARDS ===== */
+body.dark-mode .card {
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
+    border: 1px solid rgba(111, 66, 193, 0.2) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .card-body,
+body.dark-mode .card-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .card-text {
+    color: #e8e8e8 !important;
+}
+
+/* ===== DARK MODE HERO SECTION ===== */
+body.dark-mode .hero-section {
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.9) 100%) !important;
+}
+
+/* ===== DARK MODE FOOTER ===== */
+body.dark-mode .footer {
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
+    color: #ffffff !important;
+    border-top: 1px solid rgba(111, 66, 193, 0.3) !important;
+}
+
+/* ===== DARK MODE BUTTONS ===== */
+body.dark-mode .btn-outline-light {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    background: rgba(111, 66, 193, 0.1) !important;
+}
+
+body.dark-mode .btn-outline-light:hover {
+    background: rgba(111, 66, 193, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.dark-mode .btn-primary {
+    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important;
+    border-color: #6f42c1 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .btn-primary:hover {
+    background: linear-gradient(135deg, #5a2d91, #4a1d7a) !important;
+    border-color: #5a2d91 !important;
+}
+
+/* ===== DARK MODE BADGES ===== */
+body.dark-mode .badge {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .badge.bg-primary {
+    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important;
+}
+
+body.dark-mode .badge.bg-success {
+    background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+}
+
+body.dark-mode .badge.bg-warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800) !important;
+    color: #212529 !important;
+}
+
+body.dark-mode .badge.bg-danger {
+    background: linear-gradient(135deg, #dc3545, #c82333) !important;
+}
+
+/* ===== DARK MODE ICONS ===== */
+body.dark-mode .fas {
+    color: #e8e8e8 !important;
+}
+
+body.dark-mode .fas.text-primary {
+    color: #b19cd9 !important;
+}
+
+/* ===== DARK MODE FORMS ===== */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background: rgba(26, 11, 46, 0.8) !important;
+    border: 2px solid rgba(111, 66, 193, 0.3) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background: rgba(26, 11, 46, 0.9) !important;
+    border-color: #6f42c1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25) !important;
+}
+
+body.dark-mode .form-label {
+    color: #b19cd9 !important;
+}
+
+/* ===== DARK MODE TYPOGRAPHY ===== */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .lead {
+    color: #d1d1d1 !important;
+}
+
+body.dark-mode .display-4 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ===== DARK MODE LINKS ===== */
+body.dark-mode a {
+    color: #b19cd9 !important;
+}
+
+body.dark-mode a:hover {
+    color: #d4b3ff !important;
+}
+
+body.dark-mode .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+    color: #ffffff !important;
+}
+
+/* ===== DARK MODE BACKGROUND LOGO ===== */
+body.dark-mode .background-logo {
+    opacity: 0.08 !important;
+    filter: brightness(0.8) grayscale(100%) !important;
+}
+
+/* ===== DARK MODE CALENDAR ===== */
+body.dark-mode .calendar-box {
+    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important;
+    color: #fff !important;
+    box-shadow: 0 6px 15px rgba(111, 66, 193, 0.4) !important;
+}
+
+/* ===== DARK MODE ATTENDANCE CONTROLS ===== */
+body.dark-mode .attendance-controls .btn {
+    border-color: rgba(111, 66, 193, 0.3) !important;
+    background: rgba(111, 66, 193, 0.1) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .attendance-controls .btn:hover {
+    background: rgba(111, 66, 193, 0.3) !important;
+}
+
+/* ===== DARK MODE FOCUS & ACCESSIBILITY ===== */
+body.dark-mode :focus {
+    outline: 2px solid #b19cd9 !important;
+    outline-offset: 2px !important;
+}
+
+body.dark-mode .skip-link {
+    background: #6f42c1 !important;
+    color: #ffffff !important;
+}
+
+/* ===== DARK MODE PLACEHOLDER TEXT ===== */
+body.dark-mode ::placeholder {
+    color: #b19cd9 !important;
+    opacity: 1 !important;
+}
+
+/* ===== DARK MODE TABLES ===== */
+body.dark-mode .table {
+    color: #e8e8e8 !important;
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(111, 66, 193, 0.1) !important;
+}
+
+/* ===== DARK MODE ALERTS ===== */
+body.dark-mode .alert {
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
+    border: 1px solid rgba(111, 66, 193, 0.3) !important;
+    color: #e8e8e8 !important;
+}
+
+/* ===== DARK MODE MODALS ===== */
+body.dark-mode .modal-content {
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95) 0%, rgba(26, 11, 46, 0.98) 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(111, 66, 193, 0.3) !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: rgba(111, 66, 193, 0.3) !important;
+}
+
+/* ===== DARK MODE DROPDOWNS ===== */
+body.dark-mode .dropdown-menu {
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95) 0%, rgba(26, 11, 46, 0.98) 100%) !important;
+    border: 1px solid rgba(111, 66, 193, 0.3) !important;
+}
+
+body.dark-mode .dropdown-item {
+    color: #e8e8e8 !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background: rgba(111, 66, 193, 0.2) !important;
+    color: #ffffff !important;
+} 
