@@ -1,0 +1,86 @@
+/* 
+
+Making the custom stylesheet, well need it for unique visuals that arent covered by boostrap 5 
+
+I used alot of AI to help me build this style sheet and did not understand it at first but overtime i was able to adapt
+
+it has layout features for the nav bar, footers, and backgrounds, 
+it has component features for the cards, buttons, badges (for tasks), and forms 
+it has page specific features for attendance at the task page and for the calendar also on the tasks page
+utility animations and accecibilities
+and media queries
+-------------------
+
+*/
+
+/* here im defining the variables to the brand colors, i am using bootstrap as the reference and can apply them to the html doc by adding the (--bs-(color ive defined) in the logic blocks. */
+
+:root {
+--bs-primary: #6f42c1;
+--bs-secondary: #563d7c; /* Deep purple for secondary UI */
+ --bs-success: #28a745; /* Success green */
+ --bs-danger: #dc3545; /* Error red */
+ --bs-warning: #ffc107; /* Warning yellow */
+ --bs-info: #17a2b8; /* Info blue */
+ --bs-light: #f8f9fa; /* Light backgrounds */
+ --bs-dark: #343a40; /* Dark backgrounds */
+ --brand-gradient: linear-gradient(135deg, #6f42c1 0%, #8b5cf6 50%, #a78bfa 100%); /* Used for navbar, cards, etc. */
+}
+
+body {  /* selecting the entire body of the page  */
+	font-family: 'segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* this will represent the font of the website */
+	background: var(--bs-light); /* setting a light background color to the entire page */
+	color: #2c3e50; /* making the text deep blue */
+	min-height: 100vh; /* making sure the bg takes up the whole page */
+}
+
+
+
+
+/* setting up the layout (nav bar, footer, and background logo */
+
+.navbar { /* targeting the bootstrap navigation bar */
+	background: var(--brand-gradient) !important; /* targeting a css variable that is purple theme, and the important overrides bootstraps default variable */
+  box-shadow: 0 4px 20px rgba(111, 66, 193, 0.15); /* adding a subtle shadow under the navbar */
+}
+
+.navbar-brand img { /* targetting the logo inside the nav bar */
+  height: 75px; /* making the logo a consistent size */
+  width: auto; /* we used it to make sure the logo scales properly */
+  transition: transform 0.5s; /* making animations, the logo will hover a bit  */
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); /* giving the logo a subtle shadow so it looks 3d when hovered */
+}
+.navbar-brand img:hover {
+  transform: scale(1.4); /* making the logo enlarge on hover */
+}
+
+.footer {
+  background: var(--bs-dark); /* Dark footer for contrast */
+  color: #fff; /* setting the text of the footer to white */
+  padding: 2rem 0; /* giving space in the footer, 0 gives vertical space for the top and bottom*/
+}
+.footer-logo { /* footer logo related */
+  height: 100px; /* Footer logo size */
+  width: auto; /* Keep aspect ratio */
+  transition: transform 0.5s; /* Smooth hover effect */
+}
+.footer-logo:hover {
+  transform: scale(1.3); /* Interactive hover */
+}
+
+.background-logo {
+  position: fixed; /* makes sure its always in the background and is fixed */
+  top: 50%; /* centers vertically */
+  left: 50%; /* centers the logo horizontally */
+  transform: translate(-50%, -50%); /* centering the logo in the middle */
+  opacity: 0.03; /* changing the opacity (visibility) of the logo so it looks like a watermark */
+  z-index: -1; /* using the z-index, makes sure the logo is behind all the content on the page */
+  pointer-events: none; /* this makes the logo not clickable, causing it not to interfere with the content on the page */
+}
+.background-logo img {
+  width: 550px; /* Large but subtle */
+  height: auto; /* Keep aspect ratio */
+  filter: grayscale(200%); /* desaturates the logo to make it subtle  */
+}
+
+
