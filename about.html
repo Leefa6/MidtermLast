@@ -1,0 +1,224 @@
+<!--
+============================================================
+ 📄 HIGH STILL - ABOUT PAGE (about.html)
+============================================================
+ This page introduces the High Still band, its story, mission,
+ and team members. It features a hero section, story/mission
+ cards, and a team member grid, all styled with Bootstrap.
+
+ Key Features:
+   • Responsive navigation bar with dark mode toggle
+   • About section with logo, title, and mission statement
+   • Story and mission cards
+   • Team member cards with icons and roles
+   • Footer with branding
+
+ Dependencies:
+   • Bootstrap 5 (layout, grid, components)
+   • Font Awesome (icons)
+   • jQuery (DOM manipulation)
+   • Custom CSS (style.css, dark-mode.css)
+   • Custom JS (main.js)
+============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ============================================================
+     🏷️ PAGE METADATA & STYLES
+     Sets up responsive design, title, and loads all CSS libraries.
+    ============================================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - High Still</title>
+    <!-- Bootstrap CSS for responsive layout and components -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for site-specific styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Dark mode theme styles -->
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!--
+    ============================================================
+     🖼️ BACKGROUND LOGO EFFECT
+     Creates a subtle background watermark effect for branding.
+    ============================================================
+    -->
+    <div class="background-logo">
+        <img src="images/imagelogo.png" alt="High Still Background">
+    </div>
+
+    <!--
+    ============================================================
+     🧭 MAIN NAVIGATION BAR
+     Provides site-wide navigation and dark mode toggle.
+    ============================================================
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
+        <div class="container">
+            <!-- Brand logo that links to home page -->
+            <a class="navbar-brand" href="index.html">
+                <img src="images/imagelogo.png" alt="High Still Logo">
+            </a>
+            <!-- Mobile navigation toggle button for responsive menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation menu items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="requests.html">Song Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html" aria-current="page">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Dark mode toggle button (calls JS to switch theme) -->
+                <button class="btn btn-outline-light" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!--
+    ============================================================
+     🏆 ABOUT SECTION
+     Main about content with logo, title, and mission statement.
+    ============================================================
+    -->
+    <main id="main-content" class="container py-4">
+        <section class="about-section mb-5">
+            <!-- Page header with logo and title -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center mb-5">
+                    <img src="images/imagelogo.png" alt="High Still Logo" class="about-logo mb-4">
+                    <h1 class="display-4 mb-4">About High Still</h1>
+                    <p class="lead">Creating unforgettable musical experiences since 2020</p>
+                </div>
+            </div>
+            <!--
+            ============================================================
+             📖 STORY AND MISSION CARDS
+             Two cards: one for the band's story, one for its mission.
+            ============================================================
+            -->
+            <div class="row">
+                <!-- Our Story Card -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title h3 mb-4">Our Story</h2>
+                            <p class="card-text">High Still was formed with a passion for creating unique musical experiences. We blend various genres to create our signature sound that resonates with audiences worldwide.</p>
+                            <p class="card-text">Our journey began in 2020, and since then, we've been dedicated to pushing musical boundaries and creating memorable performances.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Our Mission Card -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title h3 mb-4">Our Mission</h2>
+                            <p class="card-text">We strive to create an inclusive musical environment where everyone can enjoy and participate in the magic of live music.</p>
+                            <p class="card-text">Through our performances and community engagement, we aim to inspire the next generation of musicians and music lovers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--
+        ============================================================
+         👥 TEAM SECTION
+         Team member profiles and roles.
+        ============================================================
+        -->
+        <section class="team-section mb-5">
+            <h2 class="text-center mb-4">Meet the Crew</h2>
+            <div class="row">
+                <!-- CEO/DJ Team Member Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-circle fa-4x mb-3 text-primary"></i>
+                            <h3 class="card-title h4">Laith Ab</h3>
+                            <p class="card-text text-muted">CEO / DJ sometimes</p>
+                            <p class="card-text">With 3 years of experience, the playlists will always be vibes.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event Organizer Team Member Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-circle fa-4x mb-3 text-primary"></i>
+                            <h3 class="card-title h4">Person</h3>
+                            <p class="card-text text-muted">Event organizer</p>
+                            <p class="card-text">Organizer in Athens</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Guitarist Team Member Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-circle fa-4x mb-3 text-primary"></i>
+                            <h3 class="card-title h4">Jimi Hendrix</h3>
+                            <p class="card-text text-muted">Guitarist</p>
+                            <p class="card-text">I don't know how he found us.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--
+    ============================================================
+     🦶 FOOTER
+     Site footer with logo and copyright.
+    ============================================================
+    -->
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <img src="images/imagelogo.png" alt="High Still Logo" class="footer-logo mb-3">
+            <p>&copy; 2025 High Still. All rights reserved.</p>
+        </div>
+    </footer>
+    <!--
+    ============================================================
+     ⚡ JAVASCRIPT DEPENDENCIES
+     Loads all required JS libraries for interactivity.
+    ============================================================
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- ─────────────────────────────
+         🌀 PAGE-SPECIFIC SCRIPTS
+         Adds a parallax-like scroll effect to the background logo.
+    ───────────────────────────── -->
+    <script>
+        window.addEventListener('scroll', () => {
+            // Updates the CSS variable for scroll offset, used for parallax effect
+            const scrollOffset = window.pageYOffset;
+            document.documentElement.style.setProperty('--scroll-offset', `${scrollOffset * 0.5}px`);
+        });
+    </script>
+</body>
+</html> 

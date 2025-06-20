@@ -1,0 +1,232 @@
+<!--
+============================================================
+ 📄 HIGH STILL - CONTACT PAGE (contact.html)
+============================================================
+ This page allows users to contact the High Still team for
+ bookings, collaborations, or general inquiries. It features
+ a contact form, contact info, and social media links.
+
+ Key Features:
+   • Responsive navigation bar with dark mode toggle
+   • Contact form for user messages (name, email, subject, message)
+   • Contact information card (email, phone, social links)
+   • Footer with branding
+
+ Dependencies:
+   • Bootstrap 5 (layout, grid, components)
+   • Font Awesome (icons)
+   • jQuery (DOM manipulation)
+   • Custom CSS (style.css, dark-mode.css)
+   • Custom JS (main.js)
+============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ============================================================
+     🏷️ PAGE METADATA & STYLES
+     Sets up responsive design, title, and loads all CSS libraries.
+    ============================================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - High Still</title>
+    <!-- Bootstrap CSS for responsive layout and components -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for site-specific styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Dark mode theme styles -->
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!--
+    ============================================================
+     🖼️ BACKGROUND LOGO EFFECT
+     Creates a subtle background watermark effect for branding.
+    ============================================================
+    -->
+    <div class="background-logo">
+        <img src="images/imagelogo.png" alt="High Still Background">
+    </div>
+
+    <!--
+    ============================================================
+     🧭 MAIN NAVIGATION BAR
+     Provides site-wide navigation and dark mode toggle.
+    ============================================================
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
+        <div class="container">
+            <!-- Brand logo that links to home page -->
+            <a class="navbar-brand" href="index.html">
+                <img src="images/imagelogo.png" alt="High Still Logo">
+            </a>
+            <!-- Mobile navigation toggle button for responsive menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation menu items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="requests.html">Song Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html" aria-current="page">Contact</a>
+                    </li>
+                </ul>
+                <!-- Dark mode toggle button (calls JS to switch theme) -->
+                <button class="btn btn-outline-light" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!--
+    ============================================================
+     ✉️ MAIN CONTENT AREA
+     Contains the contact form and contact information.
+    ============================================================
+    -->
+    <main id="main-content" class="container py-4">
+        <!--
+        ============================================================
+         ✉️ CONTACT SECTION
+         Contact form and information display.
+        ============================================================
+        -->
+        <section class="contact-section mb-5">
+            <!-- Section header -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center mb-5">
+                    <h1 class="display-4 mb-4">Contact Us</h1>
+                    <p class="lead">Get in touch with us for bookings, collaborations, or just to say hello!</p>
+                </div>
+            </div>
+            <div class="row">
+                <!--
+                ============================================================
+                 📝 CONTACT FORM CARD
+                 Form for users to send messages.
+                ============================================================
+                -->
+                <div class="col-md-6 mb-4">
+                    <div class="card contact-form-card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title h3 mb-4">Send us a Message</h2>
+                            <form id="contactForm">
+                                <!-- Name input field -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <!-- Email input field -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <!-- Subject input field -->
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <!-- Message textarea -->
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                ============================================================
+                 📞 CONTACT INFORMATION CARD
+                 Displays contact details and social media links.
+                ============================================================
+                -->
+                <div class="col-md-6 mb-4">
+                    <div class="card contact-info-card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title h3 mb-4">Contact Information</h2>
+                            <div class="contact-info">
+                                <!-- Email contact information -->
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-3">Email</h3>
+                                    <p><i class="fas fa-envelope me-2"></i> info@highstill.com</p>
+                                    <p><i class="fas fa-envelope me-2"></i> bookings@highstill.com</p>
+                                </div>
+                                <!-- Phone contact information -->
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-3">Phone</h3>
+                                    <p><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</p>
+                                    <p><i class="fas fa-phone me-2"></i> +1 (555) 987-6543</p>
+                                </div>
+                                <!-- Social media links -->
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-3">Social Media</h3>
+                                    <div class="social-links">
+                                        <a href="#" class="me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                                        <a href="#" class="me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                                        <a href="#" class="me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                                        <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--
+    ============================================================
+     🦶 FOOTER
+     Site footer with logo and copyright.
+    ============================================================
+    -->
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <img src="images/imagelogo.png" alt="High Still Logo" class="footer-logo mb-3">
+            <p>&copy; 2025 High Still. All rights reserved.</p>
+        </div>
+    </footer>
+    <!--
+    ============================================================
+     ⚡ JAVASCRIPT DEPENDENCIES
+     Loads all required JS libraries for interactivity.
+    ============================================================
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- ─────────────────────────────
+         🌀 PAGE-SPECIFIC SCRIPTS
+         Adds a parallax-like scroll effect to the background logo.
+    ───────────────────────────── -->
+    <script>
+        window.addEventListener('scroll', () => {
+            // Updates the CSS variable for scroll offset, used for parallax effect
+            const scrollOffset = window.pageYOffset;
+            document.documentElement.style.setProperty('--scroll-offset', `${scrollOffset * 0.5}px`);
+        });
+    </script>
+</body>
+</html> 

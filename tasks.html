@@ -1,0 +1,219 @@
+<!--
+============================================================
+ 📄 HIGH STILL - EVENTS PAGE (tasks.html)
+============================================================
+ This page allows users to view, add, and manage music events
+ for the High Still project. It features a form for adding
+ new events, a dynamic event list with attendance controls,
+ and uses Bootstrap for layout and styling.
+
+ Key Features:
+   • Responsive navigation bar with dark mode toggle
+   • Add new event form (title, priority, description, date, location)
+   • Dynamic event list with attendance and calendar display
+   • Footer with branding
+
+ Dependencies:
+   • Bootstrap 5 (layout, grid, components)
+   • Font Awesome (icons)
+   • jQuery (DOM manipulation)
+   • Custom CSS (style.css, dark-mode.css)
+   • Custom JS (main.js, tasks.js)
+============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ============================================================
+     🏷️ PAGE METADATA & STYLES
+     Sets up responsive design, title, and loads all CSS libraries.
+    ============================================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - High Still</title>
+    <!-- Bootstrap CSS for responsive layout and components -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for site-specific styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Dark mode theme styles -->
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!--
+    ============================================================
+     🖼️ BACKGROUND LOGO EFFECT
+     Creates a subtle background watermark effect for branding.
+    ============================================================
+    -->
+    <div class="background-logo">
+        <img src="images/imagelogo.png" alt="High Still Background">
+    </div>
+
+    <!--
+    ============================================================
+     🧭 MAIN NAVIGATION BAR
+     Provides site-wide navigation and dark mode toggle.
+    ============================================================
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
+        <div class="container">
+            <!-- Brand logo that links to home page -->
+            <a class="navbar-brand" href="index.html">
+                <img src="images/imagelogo.png" alt="High Still Logo">
+            </a>
+            <!-- Mobile navigation toggle button for responsive menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation menu items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tasks.html" aria-current="page">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="requests.html">Song Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Dark mode toggle button (calls JS to switch theme) -->
+                <button class="btn btn-outline-light" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!--
+    ============================================================
+     🏆 PAGE HEADER
+     Displays the main heading and intro for the events page.
+    ============================================================
+    -->
+    <main id="main-content" class="container py-4">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 text-center">
+                <h1 class="display-4 mb-4">Event Management</h1>
+                <p class="lead">Manage your events and track attendance</p>
+            </div>
+        </div>
+
+        <!--
+        =============================================================
+         ➕ ADD NEW EVENT FORM
+         Lets users add a new event with all required details.
+        =============================================================
+        -->
+        <section class="add-event-section mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h4 mb-0">Add New Event</h2>
+                </div>
+                <div class="card-body">
+                    <form id="addTaskForm">
+                        <div class="row">
+                            <!-- Event Title -->
+                            <div class="col-md-6 mb-3">
+                                <label for="taskTitle" class="form-label">Event Title</label>
+                                <input type="text" class="form-control" id="taskTitle" required>
+                            </div>
+                            <!-- Event Priority -->
+                            <div class="col-md-6 mb-3">
+                                <label for="taskPriority" class="form-label">Priority</label>
+                                <select class="form-select" id="taskPriority" required>
+                                    <option value="">Select Priority</option>
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Event Description -->
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="taskDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="row">
+                            <!-- Event Date -->
+                            <div class="col-md-6 mb-3">
+                                <label for="taskDueDate" class="form-label">Event Date</label>
+                                <input type="date" class="form-control" id="taskDueDate" required>
+                            </div>
+                            <!-- Event Location -->
+                            <div class="col-md-6 mb-3">
+                                <label for="eventLocation" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="eventLocation" required>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Event
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!--
+        =============================================================
+         📋 EVENTS LIST
+         Displays all events dynamically (populated by JS).
+        =============================================================
+        -->
+        <section class="events-list-section">
+            <div class="row">
+                <div class="col-12">
+                    <div id="taskList">
+                        <!-- Events will be dynamically populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ─────────────────────────────
+         🦶 FOOTER
+         Site footer with logo and copyright.
+    ───────────────────────────── -->
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <img src="images/imagelogo.png" alt="High Still Logo" class="footer-logo mb-3">
+            <p>&copy; 2025 High Still. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ─────────────────────────────
+         ⚡ JAVASCRIPT DEPENDENCIES
+         Loads all required JS libraries for interactivity.
+    ───────────────────────────── -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tasks.js"></script>
+    
+    <!-- ─────────────────────────────
+         🌀 PAGE-SPECIFIC SCRIPTS
+         Adds a parallax-like scroll effect to the background logo.
+    ───────────────────────────── -->
+    <script>
+        window.addEventListener('scroll', () => {
+            // Updates the CSS variable for scroll offset, used for parallax effect
+            const scrollOffset = window.pageYOffset;
+            document.documentElement.style.setProperty('--scroll-offset', `${scrollOffset * 0.5}px`);
+        });
+    </script>
+</body>
+</html> 
