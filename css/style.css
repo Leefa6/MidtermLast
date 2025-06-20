@@ -37,7 +37,10 @@ body {  /* selecting the entire body of the page  */
 
 
 
-/* setting up the layout (nav bar, footer, and background logo */
+/* LAYOUTTTTTTTTTTT
+==============
+setting up the layout (nav bar, footer, and background logo 
+==========================================*/
 
 .navbar { /* targeting the bootstrap navigation bar */
 	background: var(--brand-gradient) !important; /* targeting a css variable that is purple theme, and the important overrides bootstraps default variable */
@@ -77,10 +80,205 @@ body {  /* selecting the entire body of the page  */
   z-index: -1; /* using the z-index, makes sure the logo is behind all the content on the page */
   pointer-events: none; /* this makes the logo not clickable, causing it not to interfere with the content on the page */
 }
-.background-logo img {
+.background-logo img { /* background logo visibility and size */
   width: 550px; /* Large but subtle */
   height: auto; /* Keep aspect ratio */
   filter: grayscale(200%); /* desaturates the logo to make it subtle  */
 }
+
+
+/* COMPONENTSSSSSSSS
+cards , buttons, badges, and forms
+===============================
+used bootsrap classes for the layout, spacing, and color
+minimal overrides for effects
+==================
+*/
+.card { /* card class from bootstrap, using it to make the effects on the cards */
+  border-radius: 1rem; /* making the corners softer */
+  box-shadow: 0 4px 16px rgba(111, 66, 190, 0.08); /* adding gentle shadows around the box */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover */
+}
+
+.card:hover { /* adding hovers on all the cards in the pages, for visual effects and making the website feel alive */
+  transform: translateY(-4px); /* this lifts the card and makes it hover */
+  box-shadow: 0 8px 32px rgba(111, 66, 190, 0.15); /* adding a deeper shadow when hovered */
+}
+
+.card-title { /* making the titles of the boxes bold */
+  font-weight: 1000; /* Bold titles */
+  color: var(--bs-primary); /* Brand color */
+}
+
+.card-header, .card-footer{
+  background: var(--bs-light); /* Light background for contrast */
+}
+
+.btn-primary, .btn-outline-primary { /*changing the buttons styles, making them more rounded */
+  border-radius: 0.75rem; /* rounding the buttons */
+  font-weight: 600; /* making the text bold */
+  letter-spacing: 0.20px; /* Slightly spaced letters */
+}
+
+.btn-primary { /* styling the primary buttons, basically the call to action buttons slimmer */ 
+  background: var(--brand-gradient); /* Gradient for main CTAs, custom background (purple to blue) */
+  border: none; /* No border */
+}
+
+.btn-primary:hover { /* making the color a solid purple when hovered */
+  background: var(--bs-primary); /* Solid on hover */
+}
+
+.badge { /* setting up the badge colors, this will be important for the tasks, priority, medium low */
+  border-radius: 0.5rem; /* Rounded badges */
+  font-weight: 600; /* Bold text */
+  text-transform: uppercase; /* All caps */
+  font-size: 0.85rem; /* Slightly smaller text */
+}
+
+.form-label { /* form label will target the labels that describe form inputs */
+  font-weight: 600; /* Bold label */
+  color: var(--bs-primary); /* Brand color for label */
+  text-transform: uppercase; /* All caps */
+  font-size: 0.9rem; /* Slightly smaller */
+}
+
+.form-control, .form-select { /* main input classes from bootstrap, targets the text inputs, dropdowns, etc */
+  border-radius: 0.5rem; /* Rounded input fields */
+  font-weight: 500; /* Medium weight text */
+}
+
+.form-control:focus, .form-select:focus { /* this will change how input fields look when you tap/click on them */ 
+  border-color: var(--bs-primary); /* this will make it a purple color */
+  box-shadow: 0 0 0 0.2rem rgba(111,66,193,0.15); /* this will give it a subtle shadow */
+}
+
+/* ===========================
+SPECIFIC CHANGES/FEATURES ,, CALENDAR, AND ATTENDANCE 
+=======================
+============
+======
+===
+=
+*/
+.attendance-controls { /* this block will change the attendance buttons, if they are attending or not and if they undo */
+  display: flex; /* flexboxes allow us to allign easier */
+  gap: 0.5rem; /* gap to give us space between the buttons */
+  flex-wrap: wrap; /* adjusts the text on smaller screens */
+  justify-content: center; /* centers the buttons */
+  margin-top: 1rem; /* gives space above the control group, this will seperate it visually from the content above */
+}
+
+.attendance-controls .btn { /* this is for the buttons, they will be applied in the attendance control buttons */
+  min-width: 120px; /* making sure the button size is consistent so its not dif from others */
+  font-size: 0.95rem; /* Slightly larger text */
+  font-weight: 600; /* Bolder text */
+}
+
+.calendar-display { /* how the calendar will be displayed */ 
+  text-align: center; /* Center calendar */
+  margin: 2rem 2; /* Space above and below */
+}
+
+.calendar-box { /* calendar box/card */
+  display: inline-block; /* Inline for centering */
+  background: var(--brand-gradient); /* Brand gradient for calendar */
+  color: #fff; /* White text */
+  padding: 1rem; /* Padding inside box */
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(111,66,193,0.10); /* Subtle shadow */
+  min-width: 100px; /* Minimum width for box */
+}
+
+.calendar-header { /* header for the calendar boxes in tasks */
+  font-size: 0.8rem; /* Small header text */
+  text-transform: uppercase; /* All caps */
+  opacity: 0.9; /* Slightly faded */
+}
+
+
+.calendar-month { /* cal month */
+  font-size: 1.1rem; /* Month text size */
+  font-weight: 700; /* Bold month */
+}
+
+.calendar-year { /* calendar year style */
+  font-size: 0.9rem; /* Year text size */
+  opacity: 0.8; /* Slightly faded */
+}
+
+
+
+.calendar-day { /* calendar day */ 
+  font-size: 2rem; /* Large day number */
+  font-weight: 800; /* Extra bold */
+  margin: 0.5rem 0; /* Space above and below */
+}
+
+
+/* Animations and acccibility 
+===========
+================
+==========
+=====================
+*/
+
+
+@keyframes fadeIn {  /* this defines an animation in css, fade in. it transitions from fully tansperent to fully visible */
+  from { opacity: 0; } /* Start fully transparent */
+  to { opacity: 1; }   /* End fully opaque */
+}
+
+.fade-in { /* making the actual animation, its used for fade in task cards and pop ups */
+  animation: fadeIn 0.8s ease-in; /* Fade in animation, starts slow then speeds up (ease-in) */
+}
+
+:focus { /* this will target any element that gets input from a keyboard, if its selected it will be outlined black around it for accessibility */
+  outline: 2px solid var(--bs-primary); /* High contrast focus for accessibility */
+  outline-offset: 2px; /* Space between outline and element */
+}
+
+.skip-link { /* the actual skiplink, this will make pressing (tab) on the keyboard it will skip him through the links */
+  position: absolute; /* Remove from normal flow */
+  left: -999px; /* Hide off screen by default */
+  top: auto;
+  width: 1px; /* Visually hidden */
+  height: 1px;
+  overflow: hidden; /* Hide content */
+  z-index: 1000; /* On top when focused */
+  background: var(--bs-primary); /* Brand color background */
+  color: #fff; /* White text */
+  padding: 0.5rem 1rem; /* Padding for accessibility */
+  border-radius: 0.5rem; /* Rounded corners */
+  font-weight: 600; /* Bold text */
+  transition: left 0.3s; /* Smooth transition when focused */
+}
+
+.skip-link:focus {
+  left: 1rem; /* Move into view when focused */
+  width: auto;
+  height: auto;
+  outline: 3px solid var(--bs-warning); /* Yellow outline for focus */
+}
+
+
+/* =======================
+
+MEDIA - responsitivity 
+
+/* this adjusts for the mobile and tablet users */
+======================================  */
+
+@media (max-width: 768px) { /* using the media function along with the 768px will allow mobile users and tablet users to be able to have the same effects when they enter the website, the commands ovveride and adjust to the screen */
+  .navbar-brand img { height: 32px; } /* Smaller logo on mobile */
+  .footer-logo { height: 36px; } /* Smaller footer logo */
+  .calendar-box { min-width: 80px; padding: 0.5rem; } /* Smaller calendar */
+  .calendar-day { font-size: 1.2rem; } /* Smaller day number */
+  .attendance-controls { flex-direction: column; align-items: center; } /* Stack buttons */
+  .attendance-controls .btn { width: 100%; max-width: 200px; } /* Full width buttons */
+} 
+
+
+
 
 
