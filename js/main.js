@@ -1,107 +1,117 @@
 /**
- * main.js
- *
- * Handles sitewide functionality including:
- * - Dark mode theme switching with localStorage persistence.
- * - User notification system.
- * - Accessibility features (skip links).
+ * main.js - Main JavaScript file for High Still website
+ * Handles dark mode, notifications, latest activity, and accessibility
  */
 
-// Wait for the DOM to be fully loaded before running scripts
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing main.js...');
-    
-    // --- DOM ELEMENT REFERENCES ---
-    const darkModeToggleButton = document.getElementById('darkModeToggle');
-    const documentBody = document.body;
+document.addEventListener('DOMContentLoaded', function() {
+    var darkModeButton = document.querySelector('#darkModeToggle');
+    var pageBody = document.body;
 
-    console.log('Dark mode toggle button found:', darkModeToggleButton);
-    console.log('Document body found:', documentBody);
-
-    // --- INITIALIZATION ---
-    if (darkModeToggleButton) {
-        console.log('Initializing dark mode functionality...');
-        initializeDarkMode();
-    } else {
-        console.error('Dark mode toggle button not found!');
+    if (darkModeButton) {
+        setupDarkMode();
     }
-    addAccessibilitySkipLink();
     
-    // --- DARK MODE LOGIC ---
-    function initializeDarkMode() {
-        console.log('Setting up dark mode...');
+    addSkipLink();
+    showLatestActivity();
+    
+    window.showNotification = showNotification;
+    window.updateLatestActivity = showLatestActivity;
+    
+    function setupDarkMode() {
+        var savedSetting = localStorage.getItem('darkMode');
         
-        // Apply saved theme on page load
-        const savedDarkMode = localStorage.getItem('darkMode');
-        console.log('Saved dark mode preference:', savedDarkMode);
-        
-        if (savedDarkMode === 'true') {
-            documentBody.classList.add('dark-mode');
-            updateDarkModeButtonIcon(true);
-            console.log('Dark mode applied from localStorage');
+        if (savedSetting === 'true') {
+            pageBody.classList.add('dark-mode');
+            changeButtonIcon(true);
         }
 
-        // Add click event listener
-        darkModeToggleButton.addEventListener('click', switchDarkModeTheme);
-        console.log('Click event listener added to dark mode toggle');
+        darkModeButton.addEventListener('click', toggleDarkMode);
     }
-
-    function switchDarkModeTheme() {
-        console.log('Dark mode toggle clicked!');
-        const isDarkModeActive = documentBody.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', isDarkModeActive);
-        updateDarkModeButtonIcon(isDarkModeActive);
-        console.log('Dark mode toggled to:', isDarkModeActive);
+    
+    function toggleDarkMode() {
+        var isDark = pageBody.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        changeButtonIcon(isDark);
     }
-
-    function updateDarkModeButtonIcon(isDarkModeActive) {
-        const toggleIcon = darkModeToggleButton.querySelector('i');
-        console.log('Updating button icon, dark mode active:', isDarkModeActive);
-        console.log('Toggle icon found:', toggleIcon);
+    
+    function changeButtonIcon(isDark) {
+        var iconElement = darkModeButton.querySelector('i');
         
-        if (toggleIcon) {
-            if (isDarkModeActive) {
-                toggleIcon.classList.remove('fa-moon');
-                toggleIcon.classList.add('fa-sun');
-                console.log('Changed to sun icon');
+        if (iconElement) {
+            if (isDark) {
+                iconElement.classList.remove('fa-moon');
+                iconElement.classList.add('fa-sun');
             } else {
-                toggleIcon.classList.remove('fa-sun');
-                toggleIcon.classList.add('fa-moon');
-                console.log('Changed to moon icon');
+                iconElement.classList.remove('fa-sun');
+                iconElement.classList.add('fa-moon');
             }
         }
     }
-
-    // --- ACCESSIBILITY ---
-    function addAccessibilitySkipLink() {
-        const skipLink = document.createElement('a');
+    
+    function addSkipLink() {
+        var skipLink = document.createElement('a');
         skipLink.href = '#main-content';
         skipLink.className = 'skip-link';
         skipLink.textContent = 'Skip to main content';
-        documentBody.prepend(skipLink);
+        pageBody.insertBefore(skipLink, pageBody.firstChild);
     }
+    
+    function showLatestActivity() {
+        var activityContainer = document.querySelector('#latestActivity');
+        
+        if (!activityContainer) {
+            return;
+        }
 
-    // --- NOTIFICATION SYSTEM ---
-    /**
-     * Shows a temporary popup message to the user.
-     * @param {string} messageText - The message to display.
-     * @param {string} messageType - 'success', 'warning', 'danger', 'info'.
-     */
-    function showUserNotification(messageText, messageType = 'success') {
-        const notification = document.createElement('div');
-        notification.className = `alert alert-${messageType} notification`;
-        notification.textContent = messageText;
+        var storedTasks = localStorage.getItem('highStillTasks');
+        var taskList = storedTasks ? JSON.parse(storedTasks) : [];
+        var sortedTasks = taskList.sort(function(a, b) { return b.id - a.id; }).slice(0, 3);
+        
+        if (sortedTasks.length === 0) {
+            activityContainer.innerHTML = '<div class="alert alert-info text-center">No recent activity. <a href="tasks.html" class="alert-link">Create your first event!</a></div>';
+            return;
+        }
+
+        var htmlContent = '<ul class="list-group list-group-flush">';
+        
+        for (var i = 0; i < sortedTasks.length; i++) {
+            var task = sortedTasks[i];
+            var dateString = new Date(task.dueDate).toLocaleDateString();
+            var statusText = task.completed ? 'Completed' : 'Pending';
+            var statusClass = task.completed ? 'text-success' : 'text-warning';
+            var statusIcon = task.completed ? 'fa-check-circle' : 'fa-clock';
+            
+            htmlContent += '<li class="list-group-item d-flex justify-content-between align-items-start">';
+            htmlContent += '<div class="ms-2 me-auto"><div class="fw-bold">' + task.title + '</div><small class="text-muted">' + task.location + '</small></div>';
+            htmlContent += '<div class="text-end"><span class="badge bg-primary rounded-pill">' + dateString + '</span><br>';
+            htmlContent += '<small class="' + statusClass + '"><i class="fas ' + statusIcon + ' me-1"></i>' + statusText + '</small></div></li>';
+        }
+        
+        htmlContent += '</ul>';
+        activityContainer.innerHTML = htmlContent;
+    }
+    
+    function showNotification(message, type) {
+        if (!type) type = 'success';
+        
+        var notification = document.createElement('div');
+        notification.className = 'alert alert-' + type + ' notification';
+        notification.textContent = message;
         notification.setAttribute('role', 'alert');
         
-        documentBody.append(notification);
+        notification.style.position = 'fixed';
+        notification.style.top = '20px';
+        notification.style.left = '50%';
+        notification.style.transform = 'translateX(-50%)';
+        notification.style.zIndex = '9999';
+        notification.style.minWidth = '300px';
         
-        setTimeout(() => {
-            notification.remove();
-        }, 3000);
+        pageBody.appendChild(notification);
+        
+        setTimeout(function() {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 5000);
     }
-
-    // Expose the notification function to the global scope
-    window.showNotification = showUserNotification;
-    
-    console.log('main.js initialization complete');
 });

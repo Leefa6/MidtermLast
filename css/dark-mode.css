@@ -7,31 +7,31 @@
 ============================================================
 */
 
-/* ===== DARK MODE BASE STYLES ===== */
+/* ===== DARK MODE BASE STYLES =====  this rule activates the body to dark mode */
 body.dark-mode {
     background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%) !important;
     color: #e8e8e8 !important;
 }
 
-/* ===== DARK MODE NAVBAR ===== */
+/* ===== DARK MODE NAVBAR ===== DARK MODE TO THE NAVBAR*/ 
 body.dark-mode .navbar {
     background: linear-gradient(135deg, #2d1b69 0%, #1a0b2e 100%) !important;
     box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3) !important;
 }
 
-/* ===== DARK MODE TOGGLE BUTTON ===== */
+/* ===== DARK MODE TOGGLE BUTTON  THE TOGGLE BUTTON CHANGES COLORS ===== */
 body.dark-mode #darkModeToggle {
     background: rgba(255, 255, 255, 0.1) !important;
     border-color: rgba(255, 255, 255, 0.3) !important;
     color: #ffffff !important;
 }
 
-body.dark-mode #darkModeToggle:hover {
+body.dark-mode #darkModeToggle:hover { /* HOVER EFFECTS ON THE DARKMODE TOGGLE */
     background: rgba(255, 255, 255, 0.2) !important;
     border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* ===== DARK MODE CARDS ===== */
+/* ===== DARK MODE CARDS ===== APPLYING DARK MODE TO THE CARDS USING BOOTSTRAP CLASSES ALSO */
 body.dark-mode .card {
     background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
     border: 1px solid rgba(111, 66, 193, 0.2) !important;
@@ -39,7 +39,7 @@ body.dark-mode .card {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
 }
 
-body.dark-mode .card-body,
+body.dark-mode .card-body, /* APPLYING DARK MODE TO THE TITTLES AND THE CARDS BODY */
 body.dark-mode .card-title {
     color: #ffffff !important;
 }
@@ -50,14 +50,14 @@ body.dark-mode .card-text {
 
 /* ===== DARK MODE HERO SECTION ===== */
 body.dark-mode .hero-section {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.9) 100%) !important;
+    background: linear-gradient(135deg, rgba(21, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.9) 100%) !important;
 }
 
 /* ===== DARK MODE FOOTER ===== */
 body.dark-mode .footer {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
+    background: linear-gradient(135deg, rgba(0, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
     color: #ffffff !important;
-    border-top: 1px solid rgba(111, 66, 193, 0.3) !important;
+    border-top: 2px solid rgba(111, 66, 193, 0.3) !important;
 }
 
 /* ===== DARK MODE BUTTONS ===== */
@@ -119,7 +119,7 @@ body.dark-mode .fas.text-primary {
 body.dark-mode .form-control,
 body.dark-mode .form-select {
     background: rgba(26, 11, 46, 0.8) !important;
-    border: 2px solid rgba(111, 66, 193, 0.3) !important;
+    border: 2px solid rgba(0, 66, 193, 0.3) !important;
     color: #ffffff !important;
 }
 
@@ -151,7 +151,7 @@ body.dark-mode .lead {
 }
 
 body.dark-mode .display-4 {
-    color: #ffffff !important;
+    color: #fffff !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
 }
 

@@ -169,6 +169,84 @@
 
         <!--
         =============================================================
+         📊 TASK SUMMARY SECTION
+         Displays task statistics with required element IDs.
+        =============================================================
+        -->
+        <section class="task-summary-section mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h5 mb-0">Task Summary</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-3">
+                            <div class="border rounded p-3">
+                                <h3 class="text-primary" id="totalCount">0</h3>
+                                <small class="text-muted">Total Tasks</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="border rounded p-3">
+                                <h3 class="text-success" id="completedCount">0</h3>
+                                <small class="text-muted">Completed</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="border rounded p-3">
+                                <h3 class="text-warning" id="pendingCount">0</h3>
+                                <small class="text-muted">Pending</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+        =============================================================
+         🔄 SORTING CONTROLS
+         Allows users to sort tasks by different criteria.
+        =============================================================
+        -->
+        <section class="sorting-controls-section mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h5 mb-0">Sort Events</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="taskSortOrder" class="form-label">Sort by:</label>
+                            <select class="form-select" id="taskSortOrder">
+                                <option value="date-desc">Date (Newest First)</option>
+                                <option value="date-asc">Date (Oldest First)</option>
+                                <option value="title-asc">Title (A-Z)</option>
+                                <option value="title-desc">Title (Z-A)</option>
+                                <option value="priority">Priority (High to Low)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Quick Sort:</label>
+                            <div class="btn-group w-100 task-sort-buttons" role="group">
+                                <button type="button" class="btn btn-outline-primary active" data-sort="date-desc">
+                                    <i class="fas fa-calendar-alt me-1"></i>Date
+                                </button>
+                                <button type="button" class="btn btn-outline-primary" data-sort="title-asc">
+                                    <i class="fas fa-sort-alpha-down me-1"></i>Title
+                                </button>
+                                <button type="button" class="btn btn-outline-primary" data-sort="priority">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>Priority
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+        =============================================================
          📋 EVENTS LIST
          Displays all events dynamically (populated by JS).
         =============================================================
