@@ -2,137 +2,147 @@
 ============================================================
  🌙 HIGH STILL - DARK MODE STYLESHEET
 ============================================================
- Dark mode theme styles that override the default light theme.
- Applied when the 'dark-mode' class is present on the body element.
+ Comprehensive dark mode theme that transforms the entire website
+ from light to dark appearance. This stylesheet overrides all default
+ light theme styles when the 'dark-mode' class is applied to the body element.
+ 
+ Features:
+ - Deep purple gradient backgrounds for visual appeal
+ - High contrast text for readability
+ - Consistent color scheme throughout all components
+ - Smooth transitions and hover effects
+ - Accessibility-focused design choices
 ============================================================
 */
 
-/* ===== DARK MODE BASE STYLES =====  this rule activates the body to dark mode */
+/* ===== DARK MODE BASE STYLES ===== */
+/* This is the foundation rule that activates dark mode for the entire page */
+/* The gradient creates a sophisticated dark purple background that's easy on the eyes */
 body.dark-mode {
-    background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%) !important;
-    color: #e8e8e8 !important;
+    background: linear-gradient(135deg, #1a0b2e 0%, #16213e 50%, #0f3460 100%) !important; /* Deep purple to blue gradient for depth */
+    color: #e8e8e8 !important; /* Light gray text for high contrast against dark background */
 }
 
 /* ===== DARK MODE NAVBAR ===== DARK MODE TO THE NAVBAR*/ 
 body.dark-mode .navbar {
-    background: linear-gradient(135deg, #2d1b69 0%, #1a0b2e 100%) !important;
-    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3) !important;
+    background: linear-gradient(135deg, #2d1b69 0%, #1a0b2e 100%) !important; /* Darker purple gradient for navbar */
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3) !important; /* Purple glow shadow for depth and brand consistency */
 }
 
 /* ===== DARK MODE TOGGLE BUTTON  THE TOGGLE BUTTON CHANGES COLORS ===== */
 body.dark-mode #darkModeToggle {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* Semi-transparent white background for subtle visibility */
+    border-color: rgba(255, 255, 255, 0.3) !important; /* Light border for definition */
+    color: #ffffff !important; /* White text for maximum contrast */
 }
 
 body.dark-mode #darkModeToggle:hover { /* HOVER EFFECTS ON THE DARKMODE TOGGLE */
-    background: rgba(255, 255, 255, 0.2) !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.2) !important; /* More opaque background on hover */
+    border-color: rgba(255, 255, 255, 0.5) !important; /* Brighter border on hover for emphasis */
 }
 
 /* ===== DARK MODE CARDS ===== APPLYING DARK MODE TO THE CARDS USING BOOTSTRAP CLASSES ALSO */
 body.dark-mode .card {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
-    border: 1px solid rgba(111, 66, 193, 0.2) !important;
-    color: #ffffff !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important; /* Semi-transparent purple gradient */
+    border: 1px solid rgba(111, 66, 193, 0.2) !important; /* Subtle purple border for definition */
+    color: #ffffff !important; /* White text for maximum readability */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important; /* Deep shadow for card elevation */
 }
 
 body.dark-mode .card-body, /* APPLYING DARK MODE TO THE TITTLES AND THE CARDS BODY */
 body.dark-mode .card-title {
-    color: #ffffff !important;
+    color: #ffffff !important; /* Pure white for maximum contrast and readability */
 }
 
 body.dark-mode .card-text {
-    color: #e8e8e8 !important;
+    color: #e8e8e8 !important; /* Light gray for secondary text, still highly readable */
 }
 
 /* ===== DARK MODE HERO SECTION ===== */
 body.dark-mode .hero-section {
-    background: linear-gradient(135deg, rgba(21, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.9) 100%) !important;
+    background: linear-gradient(135deg, rgba(21, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.9) 100%) !important; /* Semi-transparent gradient for overlay effect */
 }
 
 /* ===== DARK MODE FOOTER ===== */
 body.dark-mode .footer {
-    background: linear-gradient(135deg, rgba(0, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
-    color: #ffffff !important;
-    border-top: 2px solid rgba(111, 66, 193, 0.3) !important;
+    background: linear-gradient(135deg, rgba(0, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important; /* Darker gradient for footer */
+    color: #ffffff !important; /* White text for footer content */
+    border-top: 2px solid rgba(111, 66, 193, 0.3) !important; /* Purple top border for visual separation */
 }
 
 /* ===== DARK MODE BUTTONS ===== */
 body.dark-mode .btn-outline-light {
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    background: rgba(111, 66, 193, 0.1) !important;
+    color: #ffffff !important; /* White text for contrast */
+    border-color: rgba(255, 255, 255, 0.3) !important; /* Semi-transparent white border */
+    background: rgba(111, 66, 193, 0.1) !important; /* Subtle purple background for brand consistency */
 }
 
 body.dark-mode .btn-outline-light:hover {
-    background: rgba(111, 66, 193, 0.3) !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
+    background: rgba(111, 66, 193, 0.3) !important; /* More prominent purple background on hover */
+    border-color: rgba(255, 255, 255, 0.5) !important; /* Brighter border for emphasis */
 }
 
 body.dark-mode .btn-primary {
-    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important;
-    border-color: #6f42c1 !important;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important; /* Purple gradient for primary actions */
+    border-color: #6f42c1 !important; /* Matching border color */
+    color: #ffffff !important; /* White text for maximum contrast */
 }
 
 body.dark-mode .btn-primary:hover {
-    background: linear-gradient(135deg, #5a2d91, #4a1d7a) !important;
-    border-color: #5a2d91 !important;
+    background: linear-gradient(135deg, #5a2d91, #4a1d7a) !important; /* Darker gradient on hover for feedback */
+    border-color: #5a2d91 !important; /* Matching darker border */
 }
 
 /* ===== DARK MODE BADGES ===== */
 body.dark-mode .badge {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important; /* White text for all badges */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow for text readability */
 }
 
 body.dark-mode .badge.bg-primary {
-    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important;
+    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important; /* Purple gradient for primary badges */
 }
 
 body.dark-mode .badge.bg-success {
-    background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+    background: linear-gradient(135deg, #28a745, #1e7e34) !important; /* Green gradient for success states */
 }
 
 body.dark-mode .badge.bg-warning {
-    background: linear-gradient(135deg, #ffc107, #e0a800) !important;
-    color: #212529 !important;
+    background: linear-gradient(135deg, #ffc107, #e0a800) !important; /* Yellow gradient for warnings */
+    color: #212529 !important; /* Dark text for contrast against yellow background */
 }
 
 body.dark-mode .badge.bg-danger {
-    background: linear-gradient(135deg, #dc3545, #c82333) !important;
+    background: linear-gradient(135deg, #dc3545, #c82333) !important; /* Red gradient for danger states */
 }
 
 /* ===== DARK MODE ICONS ===== */
 body.dark-mode .fas {
-    color: #e8e8e8 !important;
+    color: #e8e8e8 !important; /* Light gray for general icons */
 }
 
 body.dark-mode .fas.text-primary {
-    color: #b19cd9 !important;
+    color: #b19cd9 !important; /* Light purple for primary icons */
 }
 
 /* ===== DARK MODE FORMS ===== */
 body.dark-mode .form-control,
 body.dark-mode .form-select {
-    background: rgba(26, 11, 46, 0.8) !important;
-    border: 2px solid rgba(0, 66, 193, 0.3) !important;
-    color: #ffffff !important;
+    background: rgba(26, 11, 46, 0.8) !important; /* Semi-transparent dark background */
+    border: 2px solid rgba(0, 66, 193, 0.3) !important; /* Blue border for form fields */
+    color: #ffffff !important; /* White text for input content */
 }
 
 body.dark-mode .form-control:focus,
 body.dark-mode .form-select:focus {
-    background: rgba(26, 11, 46, 0.9) !important;
-    border-color: #6f42c1 !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25) !important;
+    background: rgba(26, 11, 46, 0.9) !important; /* Slightly more opaque background when focused */
+    border-color: #6f42c1 !important; /* Purple border for focus indication */
+    color: #ffffff !important; /* Maintain white text */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25) !important; /* Purple glow for focus feedback */
 }
 
 body.dark-mode .form-label {
-    color: #b19cd9 !important;
+    color: #b19cd9 !important; /* Light purple for form labels */
 }
 
 /* ===== DARK MODE TYPOGRAPHY ===== */
@@ -142,117 +152,117 @@ body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode h5,
 body.dark-mode h6 {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important; /* White text for all headings */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow for text depth */
 }
 
 body.dark-mode .lead {
-    color: #d1d1d1 !important;
+    color: #d1d1d1 !important; /* Slightly dimmer than headings but still highly readable */
 }
 
 body.dark-mode .display-4 {
-    color: #fffff !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    color: #ffffff !important; /* White for large display text */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important; /* Stronger shadow for larger text */
 }
 
 /* ===== DARK MODE LINKS ===== */
 body.dark-mode a {
-    color: #b19cd9 !important;
+    color: #b19cd9 !important; /* Light purple for links */
 }
 
 body.dark-mode a:hover {
-    color: #d4b3ff !important;
+    color: #d4b3ff !important; /* Brighter purple on hover for feedback */
 }
 
 body.dark-mode .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8) !important; /* Semi-transparent white for nav links */
 }
 
 body.dark-mode .nav-link:hover,
 body.dark-mode .nav-link.active {
-    color: #ffffff !important;
+    color: #ffffff !important; /* Full white for active/hover nav links */
 }
 
 /* ===== DARK MODE BACKGROUND LOGO ===== */
 body.dark-mode .background-logo {
-    opacity: 0.08 !important;
-    filter: brightness(0.8) grayscale(100%) !important;
+    opacity: 0.08 !important; /* Very low opacity to make it barely visible */
+    filter: brightness(0.8) grayscale(100%) !important; /* Darken and remove color for subtlety */
 }
 
 /* ===== DARK MODE CALENDAR ===== */
 body.dark-mode .calendar-box {
-    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important;
-    color: #fff !important;
-    box-shadow: 0 6px 15px rgba(111, 66, 193, 0.4) !important;
+    background: linear-gradient(135deg, #6f42c1, #5a2d91) !important; /* Purple gradient for calendar */
+    color: #ffffff !important; /* White text for calendar content */
+    box-shadow: 0 6px 15px rgba(111, 66, 193, 0.4) !important; /* Purple glow shadow */
 }
 
 /* ===== DARK MODE ATTENDANCE CONTROLS ===== */
 body.dark-mode .attendance-controls .btn {
-    border-color: rgba(111, 66, 193, 0.3) !important;
-    background: rgba(111, 66, 193, 0.1) !important;
-    color: #ffffff !important;
+    border-color: rgba(111, 66, 193, 0.3) !important; /* Purple border for attendance buttons */
+    background: rgba(111, 66, 193, 0.1) !important; /* Subtle purple background */
+    color: #ffffff !important; /* White text for button labels */
 }
 
 body.dark-mode .attendance-controls .btn:hover {
-    background: rgba(111, 66, 193, 0.3) !important;
+    background: rgba(111, 66, 193, 0.3) !important; /* More prominent purple background on hover */
 }
 
 /* ===== DARK MODE FOCUS & ACCESSIBILITY ===== */
 body.dark-mode :focus {
-    outline: 2px solid #b19cd9 !important;
-    outline-offset: 2px !important;
+    outline: 2px solid #b19cd9 !important; /* Purple outline for focus indication */
+    outline-offset: 2px !important; /* Offset to make outline clearly visible */
 }
 
 body.dark-mode .skip-link {
-    background: #6f42c1 !important;
-    color: #ffffff !important;
+    background: #6f42c1 !important; /* Purple background for skip link */
+    color: #ffffff !important; /* White text for skip link */
 }
 
 /* ===== DARK MODE PLACEHOLDER TEXT ===== */
 body.dark-mode ::placeholder {
-    color: #b19cd9 !important;
-    opacity: 1 !important;
+    color: #b19cd9 !important; /* Light purple for placeholder text */
+    opacity: 1 !important; /* Full opacity to ensure visibility */
 }
 
 /* ===== DARK MODE TABLES ===== */
 body.dark-mode .table {
-    color: #e8e8e8 !important;
+    color: #e8e8e8 !important; /* Light gray for table text */
 }
 
 body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: rgba(111, 66, 193, 0.1) !important;
+    background-color: rgba(111, 66, 193, 0.1) !important; /* Subtle purple background for alternating rows */
 }
 
 /* ===== DARK MODE ALERTS ===== */
 body.dark-mode .alert {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important;
-    border: 1px solid rgba(111, 66, 193, 0.3) !important;
-    color: #e8e8e8 !important;
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important; /* Semi-transparent purple gradient */
+    border: 1px solid rgba(111, 66, 193, 0.3) !important; /* Purple border for alert definition */
+    color: #e8e8e8 !important; /* Light gray text for alert content */
 }
 
 /* ===== DARK MODE MODALS ===== */
 body.dark-mode .modal-content {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95) 0%, rgba(26, 11, 46, 0.98) 100%) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(111, 66, 193, 0.3) !important;
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95) 0%, rgba(26, 11, 46, 0.98) 100%) !important; /* High opacity purple gradient */
+    color: #ffffff !important; /* White text for modal content */
+    border: 1px solid rgba(111, 66, 193, 0.3) !important; /* Purple border for modal definition */
 }
 
 body.dark-mode .modal-header,
 body.dark-mode .modal-footer {
-    border-color: rgba(111, 66, 193, 0.3) !important;
+    border-color: rgba(111, 66, 193, 0.3) !important; /* Purple borders for modal sections */
 }
 
 /* ===== DARK MODE DROPDOWNS ===== */
 body.dark-mode .dropdown-menu {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95) 0%, rgba(26, 11, 46, 0.98) 100%) !important;
-    border: 1px solid rgba(111, 66, 193, 0.3) !important;
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95) 0%, rgba(26, 11, 46, 0.98) 100%) !important; /* High opacity purple gradient */
+    border: 1px solid rgba(111, 66, 193, 0.3) !important; /* Purple border for dropdown definition */
 }
 
 body.dark-mode .dropdown-item {
-    color: #e8e8e8 !important;
+    color: #e8e8e8 !important; /* Light gray text for dropdown items */
 }
 
 body.dark-mode .dropdown-item:hover {
-    background: rgba(111, 66, 193, 0.2) !important;
-    color: #ffffff !important;
+    background: rgba(111, 66, 193, 0.2) !important; /* Purple background on hover */
+    color: #ffffff !important; /* White text on hover for emphasis */
 } 

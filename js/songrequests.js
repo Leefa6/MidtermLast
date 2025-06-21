@@ -1,224 +1,267 @@
 /*
 ============================================================
- SONG REQUESTS JAVASCRIPT - ITC4214 COURSEWORK
- Handles song request functionality with form validation and storage
+ 🎵 HIGH STILL - SONG REQUESTS JAVASCRIPT MODULE
+============================================================
+ Handles all song request functionality including:
+ - Form validation and submission
+ - Local storage management
+ - Dynamic card creation and display
+ - Song removal with confirmation
+ - Now playing status updates
 ============================================================
 */
 
-// This array will store all the song requests that users submit
-// We keep it in memory so we can display and manage the requests
+/* ===== GLOBAL VARIABLES ===== */
+// This array stores all song requests in memory for easy access and manipulation
+// Each request contains: id, title, artist, and dateAdded properties
 var songRequests = [];
 
-// This runs when the page finishes loading
-// It sets up everything we need for the song request system to work
+/* ===== PAGE INITIALIZATION ===== */
+// This event listener runs when the DOM is fully loaded and ready
+// It sets up all the necessary functionality for the song request system
 document.addEventListener('DOMContentLoaded', function() {
-    // Connect the form to our JavaScript so we can handle submissions
+    // Connect the form submission to our JavaScript handler
     setupFormListener();
     
-    // Load any song requests that were saved before (so they don't disappear when page refreshes)
+    // Restore any previously saved song requests from browser storage
     loadSongRequests();
     
-    // Show the song requests on the page so users can see them
+    // Display all song requests on the page for users to see
     displaySongRequests();
 });
 
-// This function connects our JavaScript to the form on the page
-// When someone clicks "Request Song", this function will run
+/* ===== FORM EVENT HANDLING ===== */
+// This function connects our JavaScript to the song request form
+// It prevents the default form submission and handles it with our custom logic
 function setupFormListener() {
-    // Find the form on the page using its ID
+    // Find the song request form on the page using its unique ID
     var form = document.querySelector('#addSongForm');
     
-    // If we found the form, tell it to call our function when submitted
+    // Only proceed if we successfully found the form element
     if (form) {
+        // Add an event listener that triggers when the form is submitted
         form.addEventListener('submit', function(event) {
-            // Stop the form from reloading the page (which would lose our data)
+            // Prevent the browser's default form submission behavior
+            // This stops the page from reloading and losing our data
             event.preventDefault();
             
-            // Call our function to handle the new song request
+            // Call our custom function to handle the song request submission
             addNewSongRequest();
         });
     }
 }
 
-// This function handles when someone submits a new song request
-// It gets the data from the form, checks if it's valid, and saves it
+/* ===== SONG REQUEST PROCESSING ===== */
+// This function handles the complete process of adding a new song request
+// It validates input, creates the request object, saves it, and updates the display
 function addNewSongRequest() {
-    // Get the song title and artist from the form fields
-    // trim() removes any extra spaces at the beginning or end
+    // Extract and clean the form data by removing leading/trailing whitespace
+    // This prevents issues with accidental spaces in song titles or artist names
     var songTitle = document.querySelector('#songTitle').value.trim();
     var songArtist = document.querySelector('#songArtist').value.trim();
     
-    // Check if both fields are filled in - we need both to create a valid request
+    // Validate that both required fields are filled in
+    // We need both song title and artist name to create a valid request
     if (!songTitle || !songArtist) {
-        // Show an error message to the user if they forgot to fill something
+        // Show an error notification to inform the user what's missing
         showNotification('Please fill in both song title and artist name.', 'danger');
-        return; // Stop here - don't create the request
+        return; // Exit early - don't create an incomplete request
     }
     
-    // Create a new song request object with all the information we need
+    // Create a new song request object with all necessary information
+    // Using Date.now() ensures each request has a unique identifier
     var newSong = {
-        id: Date.now(), // Give it a unique ID using the current time
-        title: songTitle, // The song title from the form
-        artist: songArtist, // The artist name from the form
-        dateAdded: new Date().toLocaleDateString() // Today's date for when it was requested
+        id: Date.now(), // Unique timestamp-based ID for this request
+        title: songTitle, // The song title from the form input
+        artist: songArtist, // The artist name from the form input
+        dateAdded: new Date().toLocaleDateString() // Current date formatted for display
     };
     
-    // Add this new song request to our list
+    // Add the new song request to our in-memory array
+    // This makes it immediately available for display and manipulation
     songRequests.push(newSong);
     
-    // Save all song requests to the browser's storage so they don't get lost
+    // Persist the updated song requests to browser's local storage
+    // This ensures requests survive page refreshes and browser restarts
     saveSongRequests();
     
-    // Update what's shown on the page to include the new request
+    // Refresh the display to show the newly added song request
+    // This updates the page without requiring a full reload
     displaySongRequests();
     
-    // Clear the form so it's ready for the next request
+    // Reset the form to its initial state for the next request
+    // This provides a clean slate for users to enter another song
     document.querySelector('#addSongForm').reset();
     
-    // Show a success message to let the user know it worked
+    // Show a success notification confirming the song was added
+    // This gives users immediate feedback that their action was successful
     showNotification('Song request "' + songTitle + '" by ' + songArtist + ' added successfully!', 'success');
 }
 
-// This function saves all song requests to the browser's storage
-// This way the requests don't disappear when the user refreshes the page
+/* ===== LOCAL STORAGE MANAGEMENT ===== */
+// This function saves all song requests to the browser's local storage
+// Local storage persists data even when the browser is closed and reopened
 function saveSongRequests() {
-    // Convert our array of song requests to a text format and save it
+    // Convert the songRequests array to a JSON string for storage
+    // JSON.stringify() serializes our JavaScript objects into a text format
     localStorage.setItem('highStillSongRequests', JSON.stringify(songRequests));
 }
 
-// This function loads song requests from the browser's storage
-// It runs when the page loads to restore any requests that were saved before
+// This function loads song requests from browser's local storage
+// It restores any previously saved requests when the page loads
 function loadSongRequests() {
-    // Try to get saved song requests from browser storage
+    // Attempt to retrieve saved song requests from local storage
+    // The key 'highStillSongRequests' identifies our specific data
     var saved = localStorage.getItem('highStillSongRequests');
     
-    // If we found saved requests, convert them back to an array
-    // If not, start with an empty array
+    // If saved data exists, parse it back into a JavaScript array
+    // If no saved data exists, start with an empty array
+    // JSON.parse() converts the stored text back into JavaScript objects
     songRequests = saved ? JSON.parse(saved) : [];
 }
 
-// This function displays all song requests on the page
-// It creates cards for each request so users can see them
+/* ===== DISPLAY MANAGEMENT ===== */
+// This function manages the display of all song requests on the page
+// It creates a visual representation of each request using Bootstrap cards
 function displaySongRequests() {
-    // Find the container on the page where we'll show the song requests
+    // Find the container element where song request cards will be displayed
+    // This container should have the ID 'songList' in the HTML
     var songListContainer = document.querySelector('#songList');
     
-    // If we can't find the container, stop here (maybe we're on the wrong page)
+    // Safety check: if the container doesn't exist, exit early
+    // This prevents errors if the function is called on the wrong page
     if (!songListContainer) return;
     
-    // Clear whatever was showing before so we can show the updated list
+    // Clear the existing content to prepare for the updated display
+    // This ensures we don't have duplicate or outdated cards
     songListContainer.innerHTML = '';
     
-    // If there are no song requests, show a friendly message
+    // Handle the case when there are no song requests to display
+    // Show a friendly message encouraging users to make the first request
     if (songRequests.length === 0) {
         songListContainer.innerHTML = '<div class="col-12"><div class="alert alert-info text-center"><i class="fas fa-music me-2"></i>No song requests yet. Be the first to request a song!</div></div>';
-        return; // Stop here - nothing more to show
+        return; // Exit early - nothing more to display
     }
     
-    // Go through each song request and create a card for it
+    // Iterate through each song request and create a visual card for it
+    // This loop processes all requests and adds them to the page
     for (var i = 0; i < songRequests.length; i++) {
-        // Create a card for this song request
+        // Create a card element for this specific song request
         var songCard = createSongCard(songRequests[i]);
         
-        // Add the card to the page so users can see it
+        // Add the completed card to the page so users can see it
         songListContainer.appendChild(songCard);
     }
 }
 
-// This function creates a single card for one song request
-// Each card shows the song title, artist, date requested, and a remove button
+/* ===== CARD CREATION ===== */
+// This function creates a single card element for displaying a song request
+// Each card shows the song information and provides action buttons
 function createSongCard(song) {
-    // Create a new div element that will become our card
+    // Create a new div element that will become our song request card
     var card = document.createElement('div');
     
-    // Give it Bootstrap classes to make it look nice and responsive
+    // Apply Bootstrap classes for responsive layout and styling
+    // col-md-6: 2 cards per row on medium screens, col-lg-4: 3 cards per row on large screens
     card.className = 'col-md-6 col-lg-4 mb-3';
     
-    // Fill the card with HTML that shows the song information
+    // Build the HTML content for the card using the song data
+    // This creates a structured layout with title, artist, date, and action buttons
     card.innerHTML = '<div class="card h-100">' +
         '<div class="card-body">' +
-        '<h5 class="card-title">' + song.title + '</h5>' + // Show the song title
-        '<p class="card-text"><strong>Artist:</strong> ' + song.artist + '</p>' + // Show the artist
+        '<h5 class="card-title">' + song.title + '</h5>' + // Display the song title prominently
+        '<p class="card-text"><strong>Artist:</strong> ' + song.artist + '</p>' + // Show the artist name
         '<p class="card-text"><small class="text-muted"><i class="fas fa-calendar me-1"></i>Requested: ' + song.dateAdded + '</small></p>' + // Show when it was requested
-        '<button class="btn btn-danger btn-sm remove-song" data-song-id="' + song.id + '"><i class="fas fa-trash me-1"></i>Remove</button>' + // Remove button
+        '<button class="btn btn-danger btn-sm remove-song" data-song-id="' + song.id + '"><i class="fas fa-trash me-1"></i>Remove</button>' + // Remove button with song ID
         '<button class="btn btn-primary btn-sm now-playing-btn ms-2" data-song-title="' + song.title + '" data-song-artist="' + song.artist + '"><i class="fas fa-play me-1"></i>Now Playing</button>' + // Now Playing button
         '</div></div>';
     
-    // Find the remove button we just created
+    // Find the remove button within this specific card
     var removeButton = card.querySelector('.remove-song');
     
-    // Tell the remove button what to do when someone clicks it
+    // Add click event listener to the remove button
+    // This allows users to delete individual song requests
     removeButton.addEventListener('click', function() {
-        // Call our function to remove this specific song request
+        // Call the removal function with this song's unique ID
         removeSongRequest(song.id);
     });
     
-    // Find the now playing button we just created
+    // Find the now playing button within this specific card
     var nowPlayingButton = card.querySelector('.now-playing-btn');
     
-    // Tell the now playing button what to do when someone clicks it
+    // Add click event listener to the now playing button
+    // This allows users to mark songs as currently playing
     nowPlayingButton.addEventListener('click', function() {
-        // Call our function to set this song as now playing
+        // Call the function to set this song as now playing
         setNowPlaying(song.title, song.artist);
     });
     
-    // Return the completed card so it can be added to the page
+    // Return the completed card element for addition to the page
     return card;
 }
 
-// This function removes a song request when someone clicks the remove button
-// It asks for confirmation first to make sure they really want to delete it
+/* ===== SONG REMOVAL FUNCTIONALITY ===== */
+// This function handles the removal of song requests with user confirmation
+// It ensures users don't accidentally delete requests they want to keep
 function removeSongRequest(songId) {
-    // Find which song request in our array has this ID
-    var songIndex = -1; // Start with -1 to mean "not found"
+    // Initialize index variable to track the position of the song in our array
+    var songIndex = -1; // -1 indicates "not found" - a safe default value
     
-    // Look through all song requests to find the one with matching ID
+    // Search through all song requests to find the one with matching ID
+    // This loop compares each request's ID with the target ID
     for (var i = 0; i < songRequests.length; i++) {
         if (songRequests[i].id === songId) {
-            songIndex = i; // Found it! Remember which position it's at
-            break; // Stop looking - we found what we need
+            songIndex = i; // Found the matching song - remember its position
+            break; // Exit the loop early since we found what we're looking for
         }
     }
     
-    // If we found the song request (songIndex is not -1)
+    // Only proceed if we successfully found the song request
     if (songIndex !== -1) {
-        // Get the song details so we can show them in the confirmation message
+        // Get the song details for use in the confirmation message
         var songToRemove = songRequests[songIndex];
         
-        // Ask the user if they're sure they want to remove this song request
+        // Show a confirmation dialog to prevent accidental deletions
+        // The message includes the song title and artist for clarity
         if (confirm('Are you sure you want to remove "' + songToRemove.title + '" by ' + songToRemove.artist + '?')) {
-            // Remove this song request from our array
+            // Remove the song request from our array using splice
+            // splice() removes elements and returns the removed elements
             songRequests.splice(songIndex, 1);
             
-            // Save the updated list to browser storage
+            // Save the updated song requests list to local storage
+            // This ensures the deletion persists across page refreshes
             saveSongRequests();
             
-            // Update what's shown on the page to reflect the change
+            // Update the display to reflect the removal
+            // This removes the card from the page immediately
             displaySongRequests();
         }
-        // If they click "Cancel", nothing happens - the song request stays
+        // If user clicks "Cancel", do nothing - the song request remains
     }
 }
 
-// This function sets a song as "now playing" and updates the display
-// It takes the song title and artist and shows them in the now playing section
+/* ===== NOW PLAYING STATUS ===== */
+// This function updates the "Now Playing" display when a song is selected
+// It provides visual feedback about which song is currently playing at the venue
 function setNowPlaying(songTitle, songArtist) {
-    // Find the now playing card on the page
+    // Find the now playing card element on the page
     var nowPlayingCard = document.querySelector('#nowPlayingCard');
     
-    // If we found the now playing section, update it with the new song
+    // Only proceed if the now playing section exists on the page
     if (nowPlayingCard) {
-        // Create the new content for the now playing section
-        // Format it as "🎵 Now Playing: {title} by {artist}"
+        // Create the HTML content for the now playing display
+        // This shows the song title and artist in a prominent format
         var nowPlayingContent = '<div class="card-body text-center">' +
             '<h3 class="card-title">🎵 Now Playing: ' + songTitle + ' by ' + songArtist + '</h3>' +
             '<p class="card-text">This song is currently playing at the venue</p>' +
             '</div>';
         
-        // Update the now playing card with the new content
+        // Update the now playing card with the new song information
+        // This immediately shows the change to users
         nowPlayingCard.innerHTML = nowPlayingContent;
         
-        // Show a notification to let the user know the song is now playing
+        // Show a notification to confirm the now playing status was updated
+        // This provides immediate feedback about the action taken
         showNotification('Now playing: "' + songTitle + '" by ' + songArtist, 'success');
     }
 } 

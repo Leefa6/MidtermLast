@@ -1,6 +1,6 @@
 /*
 ============================================================
- TASK MANAGEMENT SYSTEM - ITC4214 COURSEWORK
+ TASK MANAGEMENT SYSTEM 
 ============================================================
  Handles creating, displaying, and managing events/tasks
  Uses jQuery for DOM manipulation and localStorage for data storage

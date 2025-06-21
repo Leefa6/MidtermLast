@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isDark) {
                 iconElement.classList.remove('fa-moon');
                 iconElement.classList.add('fa-sun');
-            } else {
+    } else {
                 iconElement.classList.remove('fa-sun');
                 iconElement.classList.add('fa-moon');
-            }
-        }
+    }
+}
     }
     
     function addSkipLink() {
