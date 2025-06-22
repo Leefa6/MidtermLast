@@ -43,7 +43,7 @@ body.dark-mode #darkModeToggle:hover { /* HOVER EFFECTS ON THE DARKMODE TOGGLE *
 
 /* ===== DARK MODE CARDS ===== APPLYING DARK MODE TO THE CARDS USING BOOTSTRAP CLASSES ALSO */
 body.dark-mode .card {
-    background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important; /* Semi-transparent purple gradient */
+    background: linear-gradient(135deg, rgba(84, 70, 130, 0.9) 0%, rgba(26, 11, 46, 0.95) 100%) !important; /* Semi-transparent purple gradient */
     border: 1px solid rgba(111, 66, 193, 0.2) !important; /* Subtle purple border for definition */
     color: #ffffff !important; /* White text for maximum readability */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important; /* Deep shadow for card elevation */
@@ -51,11 +51,17 @@ body.dark-mode .card {
 
 body.dark-mode .card-body, /* APPLYING DARK MODE TO THE TITTLES AND THE CARDS BODY */
 body.dark-mode .card-title {
-    color: #ffffff !important; /* Pure white for maximum contrast and readability */
+    color: #7a84d3 !important; /* Pure white for maximum contrast and readability */
+}
+
+body.dark-mode .text-muted {
+    --bs-text-opacity: 1;
+    color: rgb(254 255 255 / 75%) !important;
+    color: #8f95ce !important;
 }
 
 body.dark-mode .card-text {
-    color: #e8e8e8 !important; /* Light gray for secondary text, still highly readable */
+    color: #f5eeee !important; /* Light gray for secondary text, still highly readable */
 }
 
 /* ===== DARK MODE HERO SECTION ===== */
@@ -142,7 +148,7 @@ body.dark-mode .form-select:focus {
 }
 
 body.dark-mode .form-label {
-    color: #b19cd9 !important; /* Light purple for form labels */
+    color: #8774a3 !important; /* Light purple for form labels */
 }
 
 /* ===== DARK MODE TYPOGRAPHY ===== */
@@ -152,7 +158,7 @@ body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode h5,
 body.dark-mode h6 {
-    color: #ffffff !important; /* White text for all headings */
+    color: #5957b8 !important; /* White text for all headings */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow for text depth */
 }
 
@@ -226,7 +232,7 @@ body.dark-mode ::placeholder {
 
 /* ===== DARK MODE TABLES ===== */
 body.dark-mode .table {
-    color: #e8e8e8 !important; /* Light gray for table text */
+    color: #ffffff !important; /* Light gray for table text */
 }
 
 body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
